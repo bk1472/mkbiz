@@ -1,3 +1,5 @@
+#ifndef __DEF_H__
+#define __DEF_H__
 /*	Copyright (c) 1990, 1991, 1992, 1993, 1994, 1995, 1996 Santa Cruz Operation, Inc. All Rights Reserved.	*/
 /*	Copyright (c) 1988, 1990 AT&T, Inc. All Rights Reserved.	*/
 /*	  All Rights Reserved  	*/
@@ -5,6 +7,11 @@
 /*	THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF Santa Cruz Operation, Inc.	*/
 /*	The copyright notice above does not evidence any   	*/
 /*	actual or intended publication of such source code.	*/
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+#include	<unistd.h>
 
 #ident	"@(#)size:common/defs.h	1.1"
 #define FATAL   1
@@ -48,4 +55,7 @@ extern int		nSbSize;
 
 extern char		versionBuf[MAX_VER_LEN];/* Buffer space for version			*/
 extern char		tmStampBuf[MAX_VER_LEN];/* Buffer space for build time		*/
-
+#ifdef __cplusplus
+}
+#endif
+#endif/*__DEF_H__*/

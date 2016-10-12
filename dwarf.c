@@ -1,5 +1,5 @@
 /* vi:ts=8
-   DWARF 2 support.
+   DWARF 2/3/4 support.
    Copyright 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2005 Free Software Foundation, Inc.
 
@@ -35,6 +35,9 @@
 #include "string.h"
 #include "malloc.h"
 #include "dwarf.h"
+
+extern int	getLong(char *pSrc);
+extern short	getShort(char *pSrc);
 
 unsigned char *pDebugStr = NULL, *pDebugInfo = NULL, *pDebugAbbr = NULL;
 size_t debugStrSize, debugInfoSize, debugAbbrSize;

@@ -14,6 +14,7 @@
 #include	<stdio.h>
 #include	<string.h>
 #include	<stdlib.h>
+#include	<ctype.h>
 
 #define	MAX_SIFT_ITEMS	128
 #define	OUTPUT_FILE		stdout

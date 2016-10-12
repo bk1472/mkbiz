@@ -13,11 +13,13 @@ OBJS	 = $(foreach src, $(SRCS), $(OBJ_DIR)/$(src:.c=.o))
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	@$(CC) -o $@ $(OBJS)
+	@$(CC) -o $@ $^
 
-.c.o:
-	@$(CC) -c -o $@ $^
+%.o : %.c
+	@$(CC) -Wno-format-security -c -o $@ $<
 
-clobber clean:
-	@$(RM) *.o
+clean:
+	@$(RM) $(OBJS)
+
+clobber: clean
 	@$(RM) $(TARGET)

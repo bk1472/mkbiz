@@ -21,14 +21,14 @@
 #include	"defs.h"
 #include	"mytypes.h"
 #include	"process.h"
+#include	"dwarf.h"
 
 
 #define	DEBUG	0
 
-int			need_swap = 0;
+extern int	searchLineInfo(char **ppDebugLine, size_t *pSize, unsigned int srchAddr, char **ppFileName);
 
-inline swap_half(void *cp);
-inline swap_long(void *cp);
+int			need_swap = 0;
 
 int
 Elf32_gettype(fp)
@@ -697,7 +697,7 @@ Elf32_Half	num;
 #endif	/* DEBUG */
 }
 
-inline swap_half(void *vp)
+void swap_half(void *vp)
 {
 	char	t, *cp = (char *) vp;
 	if (!need_swap)
@@ -705,7 +705,7 @@ inline swap_half(void *vp)
 	t = cp[0]; cp[0] = cp[1]; cp[1] = t;
 }
 
-inline swap_long(void *vp)
+void swap_long(void *vp)
 {
 	char	t, *cp = (char *) vp;
 	if (!need_swap)
@@ -714,7 +714,7 @@ inline swap_long(void *vp)
 	t = cp[1]; cp[1] = cp[2]; cp[2] = t;
 }
 
-swap_ehdr(Elf32_Ehdr *ehdr)
+void swap_ehdr(Elf32_Ehdr *ehdr)
 {
 	swap_half((char *) &ehdr->e_type);
 	swap_half((char *) &ehdr->e_machine);
@@ -731,7 +731,7 @@ swap_ehdr(Elf32_Ehdr *ehdr)
 	swap_half((char *) &ehdr->e_shstrndx);
 }
 
-swap_phdr(Elf32_Phdr *phdr)
+void swap_phdr(Elf32_Phdr *phdr)
 {
 	swap_long((char *) &phdr->p_type);
 	swap_long((char *) &phdr->p_offset);
@@ -742,7 +742,7 @@ swap_phdr(Elf32_Phdr *phdr)
 	swap_long((char *) &phdr->p_flags);
 }
 
-swap_shdr(Elf32_Shdr *shdr)
+void swap_shdr(Elf32_Shdr *shdr)
 {
 	swap_long((char *) &shdr->sh_name);
 	swap_long((char *) &shdr->sh_type);
@@ -756,7 +756,7 @@ swap_shdr(Elf32_Shdr *shdr)
 	swap_long((char *) &shdr->sh_entsize);
 }
 
-swap_stab(Elf32_Sym *pSym)
+void swap_stab(Elf32_Sym *pSym)
 {
 	swap_long((char *)&pSym->st_name);
 	swap_long((char *)&pSym->st_value);

@@ -14,6 +14,7 @@
 #include	<sys/stat.h>
 #include	<sys/types.h>
 #include	<string.h>
+#include	<ctype.h>
 #include	<errno.h>
 #include	<ar.h>
 #include	<time.h>
@@ -26,6 +27,7 @@
 /* SIZE HEADER */
 #include	"defs.h"
 #include	"mytypes.h"
+#include	"process.h"
 
 /* SIZE HEADER */
 #include	"zlib.h"
@@ -761,7 +763,7 @@ v2_mkbizinfo(ulong_t img_size, ulong_t max_size, uchar_t *pSrc, uchar_t *pDst)
 /*																			*/
 /*		exits 1 - errors found, 0 - no errors								*/
 /*--------------------------------------------------------------------------*/
-main(argc, argv)
+int main(argc, argv)
 int		argc;
 char	**argv;
 {

@@ -36,6 +36,8 @@ CFLAGS	+= -O2
 CFLAGS	+= $(INCS)
 CFLAGS	+= -DUNIX
 CFLAGS	+= -DMKBIZ
+CFLAGS	+= -Wno-format
+CFLAGS	+= -Wno-unused-result
 
 LFLAGS	 =
 LFLAGS	+= -lz

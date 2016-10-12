@@ -722,4 +722,6 @@ enum dwarf_macinfo_record_type
 
 #define DW_EH_PE_indirect	0x80
 
+extern void		parse_all_comp_units(void);
+extern void		release_all_comp_units(void);
 #endif /* _ELF_DWARF_H */

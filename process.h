@@ -1,3 +1,9 @@
+#ifndef __PROCESS_H__
+#define __PROCESS_H__
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 /*	Copyright (c) 1990, 1991, 1992, 1993, 1994, 1995, 1996 Santa Cruz Operation, Inc. All Rights Reserved.	*/
 /*	Copyright (c) 1988, 1990 AT&T, Inc. All Rights Reserved.	*/
 /*	  All Rights Reserved  	*/
@@ -28,3 +34,14 @@ static char *prusum[3] = {
         " = 0%lo\n",
         " = %ld\n"
         };
+extern void		swap_half(void *cp);
+extern void		swap_long(void *cp);
+extern void		swap_ehdr(Elf32_Ehdr *ehdr);
+extern void		swap_phdr(Elf32_Phdr *phdr);
+extern void		swap_shdr(Elf32_Shdr *shdr);
+extern void		swap_stab(Elf32_Sym *pSym);
+extern int		Elf32_gettype(FILE* fp);
+#ifdef __cplusplus
+}
+#endif
+#endif/*__PROCESS_H__*/
